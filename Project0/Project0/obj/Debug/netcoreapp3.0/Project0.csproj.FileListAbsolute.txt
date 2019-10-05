@@ -1,0 +1,6 @@
+C:\revature\wesley-project-0\Project0\Project0\bin\Debug\netcoreapp3.0\Project0.Library.dll
+C:\revature\wesley-project-0\Project0\Project0\obj\Debug\netcoreapp3.0\Project0.csprojAssemblyReference.cache
+C:\revature\wesley-project-0\Project0\Project0\obj\Debug\netcoreapp3.0\Project0.AssemblyInfoInputs.cache
+C:\revature\wesley-project-0\Project0\Project0\obj\Debug\netcoreapp3.0\Project0.AssemblyInfo.cs
+C:\revature\wesley-project-0\Project0\Project0\bin\Debug\netcoreapp3.0\Serilog.dll
+C:\revature\wesley-project-0\Project0\Project0\bin\Debug\netcoreapp3.0\Serilog.Sinks.File.dll
