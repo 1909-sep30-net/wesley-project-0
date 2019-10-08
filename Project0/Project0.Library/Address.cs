@@ -20,5 +20,13 @@ namespace Project0.Library
         //zip code
 
         public string Zip { get; set; }
+
+        public Address(string str, string cit, string st, string z)
+        {
+            Street = str;
+            City = cit;
+            State = st;
+            Zip = z;
+        }
     }
 }

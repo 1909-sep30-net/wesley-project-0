@@ -11,6 +11,10 @@ namespace Project0.Library
             SetName(firstName, lastName);
             SetAddress(address);
         }
+        public Customer(string firstName, string lastName)
+        {
+            SetName(firstName, lastName);
+        }
 
         private string firstName;
         private string lastName;

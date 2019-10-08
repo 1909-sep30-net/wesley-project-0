@@ -21,6 +21,35 @@ namespace Project0.Library
         //    orders.remove(item);
         //}
 
+        //Information about the order
+        public Store Store {get; set;}
+        public Customer Customer { get; set;}
+        public double OrderTime { get; set; }
+        public List<Merchandise> m { get; set; }
+
+
+        public Order(Customer cust, Store sto, double time, List<Merchandise> n)
+        {
+            Customer = cust;
+            Store = sto;
+            OrderTime = time;
+        }
+
         //check order address and validity of order
+        public Address OrderStoreAddress()
+        {
+            Console.WriteLine("Store's Address is: " + Store.GetStoreAddress());
+            return Store.GetStoreAddress();
+        }
+
+        public bool IsOrderValid(Order order)
+        {
+            if (order.Customer != null)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
     }
 }
