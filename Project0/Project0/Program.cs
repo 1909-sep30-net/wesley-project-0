@@ -1,5 +1,9 @@
-﻿using Project0.Library;
+﻿using EntityFramework.DataAccess.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Project0.Library;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -41,10 +45,42 @@ namespace Project0
         Customer customer;
         Store k;
         Order a;
+
+        public static readonly ILoggerFactory AppLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddConsole();
+        });
+
         static void Main(string[] args)
         {
+            string connectionString = SecretConfig.ConnectionString;
+
+            DbContextOptions<Project0Context> options = new DbContextOptionsBuilder<Project0Context>()
+                .UseSqlServer(connectionString)
+                .UseLoggerFactory(AppLoggerFactory)
+                .Options;
+
+            using var context = new Project0Context(options);
+
+            DisplayPokemon(context);
+
             Program store = new Program();
             store.Menu(); 
+        }
+
+        static void DisplayPokemon(PokemonDbContext context)
+        {
+            foreach (Pokemon pokemon in context.Pokemon
+                .Include(p => p.PokemonType)
+                    .ThenInclude(pt => pt.Type))
+            {
+                string types = string.Join(", ", pokemon.PokemonType.Select(pt => pt.Type.Name));
+                if (types.Length == 0)
+                {
+                    types = "[none]";
+                }
+                Console.WriteLine($"Pokemon {pokemon.Name} (type {types})");
+            }
         }
 
         public void Menu()
