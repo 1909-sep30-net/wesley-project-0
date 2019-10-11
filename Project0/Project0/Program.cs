@@ -68,9 +68,9 @@ namespace Project0
             store.Menu(); 
         }
 
-        static void DisplayPokemon(PokemonDbContext context)
+        static void DisplayPokemon(Project0Context context)
         {
-            foreach (Pokemon pokemon in context.Pokemon
+            /*foreach (Pokemon pokemon in context.Pokemon
                 .Include(p => p.PokemonType)
                     .ThenInclude(pt => pt.Type))
             {
@@ -80,7 +80,7 @@ namespace Project0
                     types = "[none]";
                 }
                 Console.WriteLine($"Pokemon {pokemon.Name} (type {types})");
-            }
+            }*/
         }
 
         public void Menu()
