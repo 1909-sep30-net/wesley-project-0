@@ -33,6 +33,7 @@ namespace Project0.Library
             Customer = cust;
             Store = sto;
             OrderTime = time;
+            m = n;
         }
 
         //check order address and validity of order
@@ -42,9 +43,9 @@ namespace Project0.Library
             return Store.GetStoreAddress();
         }
 
-        public bool IsOrderValid(Order order)
+        public bool IsOrderValid()
         {
-            if (order.Customer != null)
+            if (Customer != null && Store != null && m != null)
             {
                 return false;
             }

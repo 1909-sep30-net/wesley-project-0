@@ -28,5 +28,13 @@ namespace Project0.Library
             State = st;
             Zip = z;
         }
+
+        public bool CheckValidAddress()
+        {
+            if (Street != null && City != null && State != null && Zip != null)
+                return true;
+            else
+                return false;
+        }
     }
 }

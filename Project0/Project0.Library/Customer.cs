@@ -6,26 +6,29 @@ namespace Project0.Library
 {
     public class Customer
     {
-        public Customer(string firstName, string lastName, Address address)
+        /*public Customer(string firstName, string lastName, Address address)
         {
             SetName(firstName, lastName);
             SetAddress(address);
-        }
-        public Customer(string firstName, string lastName)
-        {
-            SetName(firstName, lastName);
-        }
+        }*/
 
         private string firstName;
         private string lastName;
-        private Address address;
+        //private Address address;
 
-        public string GetName()
+        public Customer(string fName, string lName)
         {
-            return firstName + " " + lastName;
+            //SetName(firstName, lastName);
+            firstName = fName;
+            lastName = lName;
         }
 
-        public void SetName(string firstName, string lastName)
+        /* public string GetName()
+         {
+             return firstName + " " + lastName;
+         }*/
+
+        /*public void SetName(string firstName, string lastName)
         {
             if (firstName == null)
             {
@@ -37,19 +40,27 @@ namespace Project0.Library
             }
             this.firstName = firstName;
             this.lastName = lastName;
-        }
-        public Address Getaddress()
-        {
-            return address;
-        }
+        }*/
+        /* public Address Getaddress()
+         {
+             return address;
+         }
 
-        public void SetAddress(Address customerAddress)
+         public void SetAddress(Address customerAddress)
+         {
+             if (address == null)
+             {
+                 throw new ArgumentNullException(nameof(address));
+             }
+             this.address = customerAddress;
+         }*/
+
+        public bool CheckValidCustomer()
         {
-            if (address == null)
-            {
-                throw new ArgumentNullException(nameof(address));
-            }
-            this.address = customerAddress;
+            if (firstName != null && lastName != null)
+                return true;
+            else
+                return false;
         }
     }
 }

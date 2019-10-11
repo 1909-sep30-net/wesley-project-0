@@ -1,5 +1,0 @@
-C:\revature\wesley-project-0\Project0\Project0.Library\bin\Debug\netstandard2.0\Project0.Library.deps.json
-C:\revature\wesley-project-0\Project0\Project0.Library\bin\Debug\netstandard2.0\Project0.Library.dll
-C:\revature\wesley-project-0\Project0\Project0.Library\obj\Debug\netstandard2.0\Project0.Library.csprojAssemblyReference.cache
-C:\revature\wesley-project-0\Project0\Project0.Library\obj\Debug\netstandard2.0\Project0.Library.AssemblyInfoInputs.cache
-C:\revature\wesley-project-0\Project0\Project0.Library\obj\Debug\netstandard2.0\Project0.Library.AssemblyInfo.cs
