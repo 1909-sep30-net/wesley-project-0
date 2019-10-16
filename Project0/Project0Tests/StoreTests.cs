@@ -8,7 +8,7 @@ namespace Project0Tests
 {
     public class StoreTests
     {
-        
+        //private readonly TestVariables tvar = new TestVariables();
         // we need the connection string to connect to the database..
         // but it should not be uploaded to public github
 
@@ -30,7 +30,7 @@ namespace Project0Tests
             //assert
         }*/
 
-        [Theory]
+        /*[Theory]
         [InlineData("123 sesame st", "dallas", "TX", "1954")]
         [InlineData("aoqiwme", "Var", "VA", "9520")]
         [InlineData("cxedr", "Car", "CA", "8520025")]
@@ -92,36 +92,171 @@ namespace Project0Tests
 
             //assert
             Assert.False(k.CheckValidCustomer());
-        }
+        }*/
 
         /*[Theory]
-        [InlineData(, "abcd")]
-        [InlineData("zxcv", null)]
-        public void DoesCheckOrderTrueWork(string a, string b)
+        [InlineData(3.5)]
+        [InlineData(4.8)]
+        public void DoesCheckOrderTrueWork(double t)
         {
             //arrange
-            Customer k;
+            Order k = tvar.GetOrder();
 
             //act
-            k = new Customer(a, b);
+            k.Customer = tvar.GetCustomer();
+            k.Store = tvar.GetStore();
+            k.OrderTime = t;
+            k.m = tvar.GetMerchandise();
 
-            //assert
+            //assert values are valid
+            Assert.True(k.Customer.CheckValidCustomer());
+            Assert.True(k.Store.CheckStoreValid()) ;
+            Assert.True(k.m.CheckValidMerchAmount());
+
+            //assert order valid
             Assert.True(k.IsOrderValid());
         }
 
         [Theory]
-        [InlineData(, "abcd")]
-        [InlineData(, null)]
-        public void DoesCheckOrderFalseWork(Customer a, string b)
+        [InlineData(-1)]
+        public void DoesCheckOrderFalseWork(double t)
         {
             //arrange
-            Order k;
+            Order k = tvar.GetOrder();
 
             //act
-            k = new Order(a, b);
+            k.Customer = tvar.GetCustomer();
+            k.Store = tvar.GetStore();
+            k.OrderTime = t;
+            k.m = tvar.GetMerchandise();
+
+            //assert values are valid
+            Assert.True(k.Customer.CheckValidCustomer());
+            Assert.True(k.Store.CheckStoreValid());
+            Assert.True(k.m.CheckValidMerchAmount());
+
+            //assert order valid
+            Assert.False(k.IsOrderValid());
+        }
+
+        [Theory]
+        [InlineData(3, 2, 1)]
+        [InlineData(9, 4, 5)]
+        [InlineData(8, 3, 6)]
+        public void DoesMerchValidTrueWork(int a, int b, int c)
+        {
+            //arrange
+            Merchandise m = new Merchandise();
+
+            //act
+            m.aAmount = a;
+            m.bAmount = b;
+            m.cAmount = c;
 
             //assert
-            Assert.False(k.IsOrderValid());
+            Assert.True(m.CheckValidMerchAmount());
+        }
+
+        [Theory]
+        [InlineData(-3, 2, 1)]
+        [InlineData(9, -4, 5)]
+        [InlineData(8, 3, -6)]
+        public void DoesMerchValidFalseWork(int a, int b, int c)
+        {
+            //arrange
+            Merchandise m = new Merchandise();
+
+            //act
+            m.aAmount = a;
+            m.bAmount = b;
+            m.cAmount = c;
+
+            //assert
+            Assert.False(m.CheckValidMerchAmount());
+        }
+
+        [Theory]
+        [InlineData(3, 2, 1)]
+        [InlineData(9, 4, 5)]
+        [InlineData(8, 3, 6)]
+        public void DoesCheckInventoryTrueWork(int a, int b, int c)
+        {
+            //arrange
+            Inventory i = new Inventory();
+
+            //act
+            i.merch.aAmount = a;
+            i.merch.bAmount = b;
+            i.merch.cAmount = c;
+
+            //assert
+            Assert.True(i.CheckInventory());
+        }
+
+        [Theory]
+        [InlineData(-3, 2, 1)]
+        [InlineData(9, -4, 5)]
+        [InlineData(8, 3, -6)]
+        public void DoesCheckInventoryFalseWork(int a, int b, int c)
+        {
+            //arrange
+            Inventory i = new Inventory();
+
+            //act
+            i.merch.aAmount = a;
+            i.merch.bAmount = b;
+            i.merch.cAmount = c;
+
+            //assert
+            Assert.False(i.CheckInventory());
+        }*/
+
+       /* [Theory]
+        [InlineData("123 sesame st", "abc", "ab", "12345")]
+        [InlineData("231 sesame st", "bac", "ba", "21354")]
+        [InlineData("321 sesame st", "cba", "ac", "52341")]
+        public void DoesCheckStoreTrueWork(string a, string b, string c, string d)
+        {
+            //arrange
+            Address k;
+            Store x;
+            Inventory i = tvar.GetInventory();
+
+            //act
+            k = new Address(a, b, c, d);
+            x = new Store(k, i);
+
+            //assert values true
+            Assert.True(i.CheckInventory());
+            Assert.True(k.CheckValidAddress());
+
+            //assert store true
+            Assert.True(x.CheckStoreValid());
+        }
+
+        [Theory]
+        [InlineData(null, "abc", "ab", "12345")]
+        [InlineData("231 sesame st", null, "ba", "21354")]
+        [InlineData("321 sesame st", "cba", null, "52341")]
+        [InlineData("312 sesame st", "cab", "cd", null)]
+        public void DoesCheckStoreFalseWork(string a, string b, string c, string d)
+        {
+            //arrange
+            Address k;
+            Store x;
+            Inventory i = new Inventory();
+
+            //act
+            k = new Address(a, b, c, d);
+            i = tvar.GetInventory2();
+            x = new Store(k, i);
+
+            //assert values false
+            Assert.False(i.CheckInventory());
+            Assert.False(k.CheckValidAddress());
+
+            //assert store false
+            Assert.False(x.CheckStoreValid());
         }*/
     }
 }
